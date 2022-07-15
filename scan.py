@@ -1,7 +1,6 @@
 from tkinter import *
 import customtkinter
 from customtkinter import *
-# from home import Home
 from sample_data import sample
 import tkinter as tk
 
@@ -13,9 +12,9 @@ class Scan(customtkinter.CTk):
         optionMenuIsClicked = False
         super().__init__()
         # root_tk = customtkinter.CTk()
-        self.configure(background='#1B2430')
+        self.configure(background='#050514')
 
-        self.geometry(f"{1180}x{820}")
+        self.geometry(f"{1280}x{800}")
         self.title("Medical Slide Scanner")
         
 
@@ -25,8 +24,8 @@ class Scan(customtkinter.CTk):
                                        textvariable=text_var,
                                        width=120,
                                        height=25,
-                                       text_color='#D6D5A8',
-                                       text_font='Helvetica 50',
+                                       text_color='#8CE6BB',
+                                       text_font='"Roboto Slab" 45',
                                        # fg_color=("white", "gray75"),
                                        justify="left",
                                        corner_radius=8)
@@ -38,8 +37,8 @@ class Scan(customtkinter.CTk):
                                                textvariable=labelVar,
                                                width=400,
                                                height=25,
-                                               text_color='#D6D5A8',
-                                               text_font='Helvetica 25',
+                                               text_color='#8CE6BB',
+                                               text_font='"Roboto Slab" 25',
                                                # fg_color=("white", "gray75"),
                                                justify="left",
                                                corner_radius=8)
@@ -59,34 +58,40 @@ class Scan(customtkinter.CTk):
             print("button pressed")
 
         scan_button = customtkinter.CTkButton(master=self,
+                                              text_font='"Roboto Slab" 18',
                                               width=120,
                                               height=32,
                                               border_width=0,
                                               corner_radius=8,
                                               text="Scan",
+                                              fg_color="#8CE6BB",
+                                              text_color="#050514",
                                               command=scan_button_event)
         scan_button.place(relx=0.9, rely=0.9, anchor=CENTER)
 
 
 
-        scan_button = customtkinter.CTkButton(master=self,
+        back_button = customtkinter.CTkButton(master=self,
+                                              text_font='"Roboto Slab" 18',
                                               width=120,
                                               height=32,
                                               border_width=0,
                                               corner_radius=8,
                                               text="Back",
+                                              fg_color="#8CE6BB",
+                                              text_color="#050514",
                                               command=self.collapseScanAndEnterHome)
-        scan_button.place(relx=0.1, rely=0.9, anchor=CENTER)
+        back_button.place(relx=0.1, rely=0.9, anchor=CENTER)
 
         def btn_change():
             print(self.file_choice.get())
             labelOption.configure(text = self.file_choice.get())
 
         for (text, value) in sample.items():
-                CTkRadioButton(self.folder_contents_frame.viewPort, text = text, variable = self.file_choice, value = value,bg_color = "#050517", command=btn_change).grid(padx=2, pady=5,column = 0, columnspan = 2, sticky = tk.W)
+                CTkRadioButton(self.folder_contents_frame.viewPort, text = text, variable = self.file_choice, value = value,bg_color = "#050517", command=btn_change, border_color='#8CE6BB').grid(padx=2, pady=5,column = 0, columnspan = 2, sticky = tk.W)
 
-        labelOption = CTkLabel(self,text="NONE",width=0)
-        labelOption.place(x=440, y=500)
+        labelOption = CTkLabel(self,text="XXX",width=10, text_color='#8CE6BB', text_font='"Roboto Slab" 9')
+        labelOption.place(relx=0.7, rely=0.7)
     
         entry = customtkinter.CTkEntry(master=self,
                                        placeholder_text="Enter sample id",
@@ -94,7 +99,7 @@ class Scan(customtkinter.CTk):
                                        height=25,
                                        border_width=2,
                                        corner_radius=10)
-        entry.place(x=550, y=515, anchor=CENTER)
+        entry.place(relx=0.775, rely=0.717, anchor=CENTER)
     # Back button
     def collapseScanAndEnterHome(self):
         from home import Home
@@ -109,7 +114,7 @@ class ScrollFrame(tk.Frame):
         super().__init__(parent) # create a frame (self)
 
         self.canvas = tk.Canvas(self, borderwidth=0, background="#050517")      # Canvas to scroll
-        self.viewPort = tk.Frame(self.canvas, background="#050517")     # This frame will hold the child widgets
+        self.viewPort = tk.Frame(self.canvas, borderwidth=0, background="#050517")     # This frame will hold the child widgets
         self.vsb = CTkScrollbar(self, orientation="vertical", command=self.canvas.yview) 
         self.canvas.configure(yscrollcommand=self.vsb.set)      # Attach scrollbar action to scroll of canvas
 
