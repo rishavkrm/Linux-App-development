@@ -2,7 +2,8 @@ from tkinter import *
 import customtkinter
 from PIL import Image, ImageTk
 from yaml import AnchorToken
-
+import os
+print(os.getcwd())
 
 
 class Home(customtkinter.CTk):
@@ -14,8 +15,8 @@ class Home(customtkinter.CTk):
 
         self.geometry(f"{1280}x{800}")
         self.title("Medical Slide Scanner")
-        scanner_image = PhotoImage(file='scannerLogo.png')
-        scanner_image = scanner_image.subsample(25)
+        # scanner_image = PhotoImage(file='scannerLogo.png')
+        # scanner_image = scanner_image.subsample(25)
 
         text_var = customtkinter.StringVar(value="MEDICAL SLIDE SCANNER")
 
@@ -60,7 +61,8 @@ class Home(customtkinter.CTk):
         #                                   )  # tuple color
 
         # Scan Button
-        scan_image = Image.open("image\img0.png")
+
+        scan_image = Image.open(f"{os.getcwd()}/image/img0.png")
         resized_image= scan_image.resize((350,350))
         scan_image = ImageTk.PhotoImage(resized_image)
         button1 = customtkinter.CTkButton(self, 
@@ -71,7 +73,7 @@ class Home(customtkinter.CTk):
                                             fg_color="#050514",
                                             hover_color="#050514")
                                         
-        find_image = Image.open("image\img1.png")
+        find_image = Image.open(f"{os.getcwd()}/image/img1.png")
         resized_image= find_image.resize((400,150))
         find_image = ImageTk.PhotoImage(resized_image)
         button2 = customtkinter.CTkButton(self, 
@@ -81,7 +83,7 @@ class Home(customtkinter.CTk):
                                             fg_color="#050514",
                                             hover_color="#050514")
 
-        search_image = Image.open("image\img2.png")
+        search_image = Image.open(f"{os.getcwd()}//image/img2.png")
         resized_image= search_image.resize((400,200))
         search_image = ImageTk.PhotoImage(resized_image)
         button3 = customtkinter.CTkButton(self, 
@@ -91,7 +93,7 @@ class Home(customtkinter.CTk):
                                             fg_color="#050514",
                                             hover_color="#050514")
 
-        demo1_image = Image.open("image\img3.png")
+        demo1_image = Image.open(f"{os.getcwd()}//image/img3.png")
         resized_image= demo1_image.resize((350,150))
         demo1_image = ImageTk.PhotoImage(resized_image)
         button4 = customtkinter.CTkButton(self, 
@@ -101,7 +103,7 @@ class Home(customtkinter.CTk):
                                             fg_color="#050514",
                                             hover_color="#050514")
 
-        demo2_image = Image.open("image\img4.png")
+        demo2_image = Image.open(f"{os.getcwd()}/image/img4.png")
         resized_image= demo2_image.resize((400,125))
         demo2_image = ImageTk.PhotoImage(resized_image)
         button5 = customtkinter.CTkButton(self, 
@@ -112,11 +114,11 @@ class Home(customtkinter.CTk):
                                             hover_color="#050514")
 
         # PLACING BUTTONS
-        button1.place(relx=0.35, rely=0.3, anchor="n")
-        button2.place(relx=0.6, rely=0.45, anchor="n")
-        button3.place(relx=0.6, rely=0.63, anchor="n")
-        button4.place(relx=0.35, rely=0.68, anchor="n")
-        button5.place(relx=0.6, rely=0.3, anchor="n")
+        button1.place(x=260, y=100)
+        button2.place(x=650, y=100)
+        button3.place(x=650, y=280)
+        button4.place(x=260, y=485)
+        button5.place(x=650, y=510)
 
     def collapseHomeAndScan(self):
         from scan import Scan

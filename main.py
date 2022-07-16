@@ -13,5 +13,6 @@ from home import Home
 
 
 home = Home()
+home.resizable(False ,False)
 home.mainloop()
 # root_tk.mainloop()
