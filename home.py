@@ -1,14 +1,13 @@
 from tkinter import *
 import customtkinter
 from PIL import Image, ImageTk
-from yaml import AnchorToken
 import os
 print(os.getcwd())
 
 
 class Home(customtkinter.CTk):
 
-    def __init__(self):
+    def __init__(self, window):
         super().__init__()
         # root_tk = customtkinter.CTk()
         self.configure(background="#050514")
