@@ -54,9 +54,6 @@ class Scan(customtkinter.CTk):
         self.folder_contents_frame = ScrollFrame(self.mainframe)
         self.folder_contents_frame.pack(side = BOTTOM)
 
-        def scan_button_event():
-            print("button pressed")
-
         scan_button = customtkinter.CTkButton(master=self,
                                               text_font='"Roboto Slab" 18',
                                               width=120,
@@ -66,7 +63,7 @@ class Scan(customtkinter.CTk):
                                               text="Scan",
                                               fg_color="#8CE6BB",
                                               text_color="#050514",
-                                              command=scan_button_event)
+                                              command=self.scan_button_event)
         scan_button.place(relx=0.9, rely=0.9, anchor=CENTER)
 
 
@@ -106,6 +103,13 @@ class Scan(customtkinter.CTk):
         self.destroy()
         home = Home()
         home.mainloop()
+    
+    # Scan Button
+    def scan_button_event(self):
+        from progress import Progress
+        self.destroy()
+        progress = Progress()
+        progress.mainloop()
     
 
 class ScrollFrame(tk.Frame):
